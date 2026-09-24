@@ -7,9 +7,9 @@ import time
 # ═══════════════════════════════════════════
 #             الإعدادات والمعلومات
 # ═══════════════════════════════════════════
-TOKEN = '8962786006:AAHg6nPy0zlHbK7M2_ZkTLKMON8fjcf5E4M'
+TOKEN = '8237170809:AAEBc9FLHiFnRYwzKCXiCIwLgfNJXCph6-s'
 ADMIN_ID = 5968344409
-LOG_CHANNEL = -1003760548477
+LOG_CHANNEL = "-1003760548477"  # وضعناها بين علامتي تنصيص لتفادي أي خطأ رقمي
 REQUIRED_CHANNELS = ['@kaisenxmlandedits', '@MediaDownloaderchannel', '@kaisencommunity']
 
 bot = telebot.TeleBot(TOKEN)
@@ -58,13 +58,13 @@ TEXTS = {
             "   ✦ مَـتـجَـر KAISEN لِـنـجُـوم تِـلـيـجـرَام ✦\n"
             "╰━━━━━━━━━━━━━━━━━━━━━╯\n\n"
             "مرحباً بك في المنصة الرسمية لربح وشراء نجوم تليجرام مجاناً!\n\n"
-            "◈ كيف يعمل البوت؟\n"
+            "◈ **كيف يعمل البوت؟**\n"
             "1. شارك رابط الإحالة الخاص بك مع أصدقائك.\n"
-            "2. كل صديق ينضم عبر رابطك يمنحك +1 نقطة.\n"
+            "2. كل صديق ينضم عبر رابطك يمنحك **+1 نقطة**.\n"
             "3. استبدل نقاطك مباشرة بنجوم تليجرام وهدايا فورية.\n"
             "4. جرّب حظك يومياً في ماكينة الحظ التفاعلية!\n"
             "5. تابع إثباتات التسليم ومصداقية المتجر حصرياً عبر: @storecredibility ⭐️\n\n"
-            "👇 استخدم الأزرار أدناه للتنقل داخل البوت:"
+            "👇 *استخدم الأزرار أدناه للتنقل داخل البوت:* "
         ),
         'btn_link': "🔗 رابطي وإحالاتي",
         'btn_store': "🛒 متجر النجوم",
@@ -73,29 +73,31 @@ TEXTS = {
         'btn_contact': "📞 تواصل معي",
         'btn_social': "📱 حساباتي الرسمية",
         'btn_help': "❓ المساعدة والتعليمات",
+        'btn_back': "↩️ رجوع",
+        'btn_home': "🏠 القائمة الرئيسية",
         'link_msg': (
-            "╭─── ◈ نظام الإحالات ◈ ───╮\n\n"
-            "🔗 رابط الدعوة الخاص بك:\n"
-            "https://t.me/{}?start={}\n\n"
-            "👤 عدد إحالاتك: {}\n"
-            "⭐️ رصيدك الحالي: {} نقطة\n\n"
-            "💡 انشر الرابط في المجموعات وأرسله لأصدقائك لجمع النقاط مجاناً!"
+            "╭─── ◈ **نظام الإحالات** ◈ ───╮\n\n"
+            "🔗 **رابط الدعوة الخاص بك:**\n"
+            "`https://t.me/{}?start={}`\n\n"
+            "👤 عدد إحالاتك: **{}**\n"
+            "⭐️ رصيدك الحالي: **{} نقطة**\n\n"
+            "💡 *انشر الرابط في المجموعات وأرسله لأصدقائك لجمع النقاط مجاناً!*"
         ),
-        'store_msg': "🛒 قائمة باقات متجر النجوم المتاحة:\nاختر الباقة المناسبة لرصيدك للاستبدال الفوري:",
+        'store_msg': "🛒 **قائمة باقات متجر النجوم المتاحة:**\nاختر الباقة المناسبة لرصيدك للاستبدال الفوري:",
         'help_msg': (
-            "╭─── ◈ دليل المساعدة والأوامر ◈ ───╮\n\n"
-            "• /start - بدء وتشغيل البوت\n"
-            "• /store - فتح متجر شراء النجوم\n"
-            "• /link - رابط الإحالة ورصيد النقاط\n"
-            "• /wheel - الدخول لماكينة الحظ اليومية\n"
-            "• /contact - التواصل المباشر مع المطور\n"
-            "• /social - جميع حسابات السوشيال ميديا\n"
-            "• /lang - تغيير لغة البوت\n"
-            "• /help - عرض هذا الدليل الإرشادي\n\n"
+            "╭─── ◈ **دليل المساعدة والأوامر** ◈ ───╮\n\n"
+            "• `/start` - بدء وتشغيل البوت\n"
+            "• `/store` - فتح متجر شراء النجوم\n"
+            "• `/link` - رابط الإحالة ورصيد النقاط\n"
+            "• `/wheel` - الدخول لماكينة الحظ اليومية\n"
+            "• `/contact` - التواصل المباشر مع المطور\n"
+            "• `/social` - جميع حسابات السوشيال ميديا\n"
+            "• `/lang` - تغيير لغة البوت\n"
+            "• `/help` - عرض هذا الدليل الإرشادي\n\n"
             "📩 لأي استفسار أو مشكلة تقنية، لا تتردد في استخدام زر التواصل."
         ),
-        'not_subbed': "⚠️ تنبيه: يجب عليك الاشتراك في القنوات التالية لتفعيل البوت:",
-        'sub_check': "✅ تحقق من الاشتراك",
+        'not_subbed': "⚠️ **تنبيه:** يجب عليك الاشتراك في القنوات التالية لتفعيل البوت:",
+        'sub_check': "🟢 تحققت من الاشتراك",
         'buy_success': "✅ تم استلام طلبك بنجاح! سيتم مراجعته وإرسال النجوم لك قريباً."
     },
     'en': {
@@ -104,13 +106,13 @@ TEXTS = {
             "   ✦ KAISEN TELEGRAM STARS STORE ✦\n"
             "╰━━━━━━━━━━━━━━━━━━━━━╯\n\n"
             "Welcome to the premier store to claim Telegram Stars for free!\n\n"
-            "◈ How it works?\n"
+            "◈ **How it works?**\n"
             "1. Share your personal invite link.\n"
-            "2. Get +1 Point for every friend who joins.\n"
+            "2. Get **+1 Point** for every friend who joins.\n"
             "3. Redeem points for real Stars & valuable rewards.\n"
             "4. Spin the Lucky Reel every 24 hours!\n"
             "5. Verify live delivery proofs & winners on: @storecredibility ⭐️\n\n"
-            "👇 Select an option below to get started:"
+            "👇 *Select an option below to get started:* "
         ),
         'btn_link': "🔗 My Link & Points",
         'btn_store': "🛒 Stars Store",
@@ -119,28 +121,30 @@ TEXTS = {
         'btn_contact': "📞 Contact Me",
         'btn_social': "📱 Official Social Media",
         'btn_help': "❓ Help & Guidelines",
+        'btn_back': "↩️ Back",
+        'btn_home': "🏠 Main Menu",
         'link_msg': (
-            "╭─── ◈ Referral System ◈ ───╮\n\n"
-            "🔗 Your Invitation Link:\n"
-            "https://t.me/{}?start={}\n\n"
-            "👤 Total Referrals: {}\n"
-            "⭐️ Current Balance: {} Points\n\n"
-            "💡 Share your link to claim free points!"
+            "╭─── ◈ **Referral System** ◈ ───╮\n\n"
+            "🔗 **Your Invitation Link:**\n"
+            "`https://t.me/{}?start={}`\n\n"
+            "👤 Total Referrals: **{}**\n"
+            "⭐️ Current Balance: **{} Points**\n\n"
+            "💡 *Share your link to claim free points!*"
         ),
-        'store_msg': "🛒 Available Stars Packages:\nChoose a package matching your points:",
+        'store_msg': "🛒 **Available Stars Packages:**\nChoose a package matching your points:",
         'help_msg': (
-            "╭─── ◈ Help & Bot Commands ◈ ───╮\n\n"
-            "• /start - Start the bot\n"
-            "• /store - Open stars store\n"
-            "• /link - Referral link & balance\n"
-            "• /wheel - Spin daily reel\n"
-            "• /contact - Direct developer contact\n"
-            "• /social - All social media portals\n"
-            "• /lang - Switch language\n"
-            "• /help - View this help menu"
+            "╭─── ◈ **Help & Bot Commands** ◈ ───╮\n\n"
+            "• `/start` - Start the bot\n"
+            "• `/store` - Open stars store\n"
+            "• `/link` - Referral link & balance\n"
+            "• `/wheel` - Spin daily reel\n"
+            "• `/contact` - Direct developer contact\n"
+            "• `/social` - All social media portals\n"
+            "• `/lang` - Switch language\n"
+            "• `/help` - View this help menu"
         ),
-        'not_subbed': "⚠️ Attention: Please join our official channels to access the bot:",
-        'sub_check': "✅ Verify Subscription",
+        'not_subbed': "⚠️ **Attention:** Please join our official channels to access the bot:",
+        'sub_check': "🟢 Verify Subscription",
         'buy_success': "✅ Order received successfully! Stars will be delivered soon."
     }
 }
@@ -155,11 +159,27 @@ def main_keyboard(lang):
     b5 = KeyboardButton(t['btn_contact'])
     b6 = KeyboardButton(t['btn_social'])
     b_help = KeyboardButton(t['btn_help'])
+    b_back = KeyboardButton(t['btn_back'])
+    b_home = KeyboardButton(t['btn_home'])
     markup.add(b1, b2)
     markup.add(b3, b4)
     markup.add(b5, b6)
     markup.add(b_help)
+    markup.add(b_back, b_home)
     return markup
+
+def navigation_keyboard(lang):
+    t = TEXTS[lang]
+    markup = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+    markup.add(KeyboardButton(t['btn_back']), KeyboardButton(t['btn_home']))
+    return markup
+
+def store_navigation_buttons(lang):
+    t = TEXTS[lang]
+    return [
+        InlineKeyboardButton(t['btn_back'], callback_data="nav_back"),
+        InlineKeyboardButton(t['btn_home'], callback_data="nav_home")
+    ]
 
 def lang_inline_kb():
     markup = InlineKeyboardMarkup()
@@ -185,70 +205,41 @@ def show_sub_gate(user_id, lang):
     markup = InlineKeyboardMarkup()
     for ch in REQUIRED_CHANNELS:
         clean_ch = str(ch).replace('@', '')
-        markup.add(InlineKeyboardButton(f"📢 Channel ({clean_ch})", url=f"https://t.me/{clean_ch}"))
+        markup.add(InlineKeyboardButton(f"🟣 Channel ({clean_ch})", url=f"https://t.me/{clean_ch}"))
     markup.add(InlineKeyboardButton(TEXTS[lang]['sub_check'], callback_data="check_sub"))
-    bot.send_message(user_id, TEXTS[lang]['not_subbed'], reply_markup=markup)
+    bot.send_message(user_id, TEXTS[lang]['not_subbed'], reply_markup=markup, parse_mode="Markdown")
 
 # ═══════════════════════════════════════════════════════════════════
-#             لوحة تحكم الأدمن (مع إرسال نصوص خالية من أخطاء Parse)
+#             لوحة تحكم الأدمن
 # ═══════════════════════════════════════════════════════════════════
 
-# 1. تصفير وقت العجلة للجميع مع إرسال إشعار فوري
 @bot.message_handler(commands=['restwheel', 'restwheelall'])
 def admin_reset_wheel(message):
-    if message.from_user.id != ADMIN_ID:
-        return
-
+    if message.from_user.id != ADMIN_ID: return
     with sqlite3.connect(DB_FILE, timeout=30) as conn:
         cursor = conn.cursor()
         cursor.execute('UPDATE users SET last_spin = 0')
         conn.commit()
         cursor.execute('SELECT user_id, lang FROM users')
         all_users = cursor.fetchall()
-
     total = len(all_users)
-    bot.reply_to(message, f"⏳ تم تصفير العجلة لـ {total} حساب، جاري إرسال الإشعارات الآن...")
-
-    notified = 0
-    failed = 0
-
+    bot.reply_to(message, f"⏳ تم تصفير العجلة لـ **{total}** حساب، جاري إرسال الإشعارات...", parse_mode="Markdown")
     for u_id, u_lang in all_users:
+        if u_id == ADMIN_ID: continue
         try:
             lang = u_lang or 'ar'
-            if lang == 'ar':
-                notice = (
-                    "🎡 مفاجأة سارة من الإدارة! 🎁\n\n"
-                    "تم إعادة تعيين عجلة الحظ لك الآن! يمكنك الدخول وتجربة حظك للفوز بنجوم وتليجرام بريميوم مجاناً.\n\n"
-                    "👇 اضغط على زر [ 🎡 لفة الحظ ] بالأسفل للتدوير فوراً!"
-                )
-            else:
-                notice = (
-                    "🎡 Admin Lucky Surprise! 🎁\n\n"
-                    "The Lucky Wheel has been reset for you! Spin now to win Stars & Telegram Premium.\n\n"
-                    "👇 Tap the [ 🎡 Lucky Wheel ] button below to spin!"
-                )
-            # إرسال بدون parse_mode لتفادي أي خطأ
-            bot.send_message(u_id, notice)
-            notified += 1
-            print(f"[OK] أرسل إشعار العجلة لـ {u_id}")
-            time.sleep(0.04)
-        except Exception as e:
-            failed += 1
-            print(f"[ERROR] فشل الإرسال لـ {u_id}: {e}")
+            notice = "🎡 **مفاجأة سارة من الإدارة!** 🎁\n\nتم إعادة تعيين عجلة الحظ لك الآن! يمكنك الدخول وتجربة حظك للفوز بنجوم وتليجرام بريميوم مجاناً.\n\n👇 اضغط على زر `🎡 لفة الحظ` بالأسفل للتدوير فوراً!" if lang == 'ar' else "🎡 **Admin Lucky Surprise!** 🎁\n\nThe Lucky Wheel has been reset for you! Spin now to win Stars & Telegram Premium.\n\n👇 Hit the `🎡 Lucky Wheel` button below to spin!"
+            bot.send_message(u_id, notice, parse_mode="Markdown")
+            time.sleep(0.05)
+        except: pass
+    bot.send_message(ADMIN_ID, "✅ **اكتملت العملية بنجاح!**", parse_mode="Markdown")
 
-    bot.send_message(
-        ADMIN_ID,
-        f"✅ اكتملت عملية التصفير!\n• تم تصفير: {total} حساب\n• استلموا الرسالة: {notified}\n• تعذر إرسالها لـ: {failed}"
-    )
-
-# 2. شحن نقاط لنفسك
 @bot.message_handler(commands=['addme', 'addpointsme'])
 def admin_add_me(message):
-    if message.from_user.id != ADMIN_ID:
-        return
+    if message.from_user.id != ADMIN_ID: return
     args = message.text.split()
     if len(args) < 2 or not args[1].lstrip('-').isdigit():
-        bot.reply_to(message, "⚠️ اكتب: /addme 100")
+        bot.reply_to(message, "⚠️ اكتب: `/addme 100`", parse_mode="Markdown")
         return
     pts = int(args[1])
     with sqlite3.connect(DB_FILE, timeout=30) as conn:
@@ -256,71 +247,40 @@ def admin_add_me(message):
         cursor.execute('UPDATE users SET points = COALESCE(points, 0) + ? WHERE user_id = ?', (pts, ADMIN_ID))
         conn.commit()
     user = get_user(ADMIN_ID)
-    bot.reply_to(message, f"✅ تم شحن رصيدك بـ {pts} نقطة!\n⭐️ رصيدك الحالي الآن: {user[2]} نقطة.")
+    bot.reply_to(message, f"✅ تم شحن رصيدك بـ **{pts}** نقطة!\n⭐️ رصيدك الحالي الآن: **{user[2]}** نقطة.", parse_mode="Markdown")
 
-# 3. شحن نقاط للجميع مع إرسال إشعار فوري مؤكد
 @bot.message_handler(commands=['addpointsall'])
 def admin_add_points_all_cmd(message):
-    if message.from_user.id != ADMIN_ID:
-        return
-
+    if message.from_user.id != ADMIN_ID: return
     args = message.text.split()
     if len(args) < 2 or not args[1].lstrip('-').isdigit():
-        bot.reply_to(message, "⚠️ اكتب: /addpointsall 20")
+        bot.reply_to(message, "⚠️ اكتب: `/addpointsall 20`", parse_mode="Markdown")
         return
-    
     pts = int(args[1])
-
     with sqlite3.connect(DB_FILE, timeout=30) as conn:
         cursor = conn.cursor()
         cursor.execute('UPDATE users SET points = COALESCE(points, 0) + ?', (pts,))
         conn.commit()
         cursor.execute('SELECT user_id, points, lang FROM users')
         all_users = cursor.fetchall()
-
     count = len(all_users)
-    bot.reply_to(message, f"✅ تم حفظ وتحديث النقاط في قاعدة البيانات ({count} حساب)!\n⏳ جاري إرسال الإشعارات الآن...")
-
-    notified = 0
-    failed = 0
-
+    bot.reply_to(message, f"✅ **تم شحن النقاط لـ ({count} حساب)!**\n⏳ جاري إرسال الإشعارات الآن...", parse_mode="Markdown")
     for u_id, u_pts, u_lang in all_users:
+        if u_id == ADMIN_ID: continue
         try:
             lang = u_lang or 'ar'
-            if lang == 'ar':
-                notice = (
-                    f"🎁 مكافأة عامة من الإدارة!\n\n"
-                    f"تمت إضافة {pts} نقطة إلى حسابك بنجاح.\n"
-                    f"⭐️ رصيدك الإجمالي الآن: {u_pts} نقطة."
-                )
-            else:
-                notice = (
-                    f"🎁 Global Admin Reward!\n\n"
-                    f"{pts} points have been added to your balance.\n"
-                    f"⭐️ Current Balance: {u_pts} points."
-                )
-            # إرسال بدون parse_mode لتفادي أخطاء التيليجرام
-            bot.send_message(u_id, notice)
-            notified += 1
-            print(f"[OK] أرسل إشعار النقاط لـ {u_id}")
-            time.sleep(0.04)
-        except Exception as e:
-            failed += 1
-            print(f"[ERROR] خطأ إرسال نقاط لـ {u_id}: {e}")
+            notice = f"🎁 **مكافأة عامة من الإدارة!**\nتمت إضافة **{pts}** نقطة إلى حسابك بنجاح.\n⭐️ رصيدك الإجمالي الآن: **{u_pts}** نقطة." if lang == 'ar' else f"🎁 **Global Admin Reward!**\n**{pts}** points have been added to your balance.\n⭐️ Current Balance: **{u_pts}** points."
+            bot.send_message(u_id, notice, parse_mode="Markdown")
+            time.sleep(0.05)
+        except: pass
+    bot.send_message(ADMIN_ID, "✅ **اكتمل توزيع النقاط والإشعارات!**", parse_mode="Markdown")
 
-    bot.send_message(
-        ADMIN_ID,
-        f"✅ اكتمل توزيع النقاط بنجاح!\n• تم الشحن لـ: {count} حساب\n• استلموا الإشعار: {notified}\n• تعذر إرسالها لـ: {failed}"
-    )
-
-# 4. توزيع نقاط عشوائية
 @bot.message_handler(commands=['giftrandomly'])
 def admin_gift_random(message):
-    if message.from_user.id != ADMIN_ID:
-        return
+    if message.from_user.id != ADMIN_ID: return
     args = message.text.split()
     if len(args) < 3 or not args[1].isdigit() or not args[2].isdigit():
-        bot.reply_to(message, "⚠️ اكتب:\n/giftrandomly <عدد_النقاط> <عدد_الأشخاص>\nمثال: /giftrandomly 50 3")
+        bot.reply_to(message, "⚠️ اكتب:\n`/giftrandomly <عدد_النقاط> <عدد_الأشخاص>`\nمثال: `/giftrandomly 50 3`", parse_mode="Markdown")
         return
     pts = int(args[1])
     num_winners = int(args[2])
@@ -335,24 +295,18 @@ def admin_gift_random(message):
         for u_id, _ in selected:
             cursor.execute('UPDATE users SET points = COALESCE(points, 0) + ? WHERE user_id = ?', (pts, u_id))
         conn.commit()
-
-    res = f"🎉 تم اختيار {len(selected)} فائز وإعطاؤهم {pts} نقطة!\n\n"
+    res = f"🎉 **تم اختيار {len(selected)} فائز وإعطاؤهم {pts} نقطة!**\n\n"
     for u_id, u_name in selected:
         tag = f"@{u_name}" if u_name and u_name != "Unknown" else "بدون يوزر"
-        res += f"• {u_id} ({tag})\n"
-        try:
-            bot.send_message(u_id, f"🎁 مبروك! تم اختيار حسابك عشوائياً وحصلت على {pts} نقطة هدية من الإدارة!")
-        except Exception:
-            pass
-    bot.reply_to(message, res)
+        res += f"• `{u_id}` ({tag})\n"
+        try: bot.send_message(u_id, f"🎁 **مبروك!** تم اختيارك عشوائياً وحصلت على **{pts}** نقطة هدية من الإدارة!", parse_mode="Markdown")
+        except: pass
+    bot.reply_to(message, res, parse_mode="Markdown")
 
-# 5. أمر /addpoints الموحد
 @bot.message_handler(commands=['addpoints'])
 def admin_add_points(message):
-    if message.from_user.id != ADMIN_ID:
-        return
+    if message.from_user.id != ADMIN_ID: return
     args = message.text.split()
-    
     if len(args) == 3 and args[1].lower() == 'all' and args[2].lstrip('-').isdigit():
         pts = int(args[2])
         with sqlite3.connect(DB_FILE, timeout=30) as conn:
@@ -361,19 +315,16 @@ def admin_add_points(message):
             conn.commit()
             cursor.execute('SELECT user_id, points, lang FROM users')
             all_users = cursor.fetchall()
-            
         count = len(all_users)
-        bot.reply_to(message, f"✅ تم شحن {pts} نقطة لكل المسجلين ({count} حساب) وتثبيتها بنجاح!")
-        
+        bot.reply_to(message, f"✅ تم شحن **{pts}** نقطة لكل المسجلين ({count} حساب) وتثبيتها بنجاح!", parse_mode="Markdown")
         for u_id, u_pts, u_lang in all_users:
+            if u_id == ADMIN_ID: continue
             try:
                 lang = u_lang or 'ar'
-                bot.send_message(u_id, f"🎁 مكافأة عامة من الإدارة!\nتمت إضافة {pts} نقطة لحسابك.\nرصيدك الحالي: {u_pts} نقطة.")
-                time.sleep(0.04)
-            except Exception:
-                pass
+                bot.send_message(u_id, f"🎁 **مكافأة عامة من الإدارة!**\nتمت إضافة **{pts}** نقطة لحسابك.\nرصيدك الحالي: **{u_pts}** نقطة.", parse_mode="Markdown")
+                time.sleep(0.05)
+            except: pass
         return
-
     elif len(args) == 3 and args[1].isdigit() and args[2].lstrip('-').isdigit():
         t_id = int(args[1])
         pts = int(args[2])
@@ -385,16 +336,12 @@ def admin_add_points(message):
             cursor = conn.cursor()
             cursor.execute('UPDATE users SET points = COALESCE(points, 0) + ? WHERE user_id = ?', (pts, t_id))
             conn.commit()
-            
         updated_u = get_user(t_id)
-        bot.reply_to(message, f"✅ تم بنجاح إضافة {pts} نقطة للمستخدم {t_id}.\n⭐️ رصيده الإجمالي الآن أصبح: {updated_u[2]} نقطة.")
-        try:
-            bot.send_message(t_id, f"🎁 مكافأة من الإدارة!\nتمت إضافة {pts} نقطة إلى حسابك.\nرصيدك الآن: {updated_u[2]} نقطة.")
-        except Exception:
-            pass
+        bot.reply_to(message, f"✅ تم بنجاح إضافة **{pts}** نقطة للمستخدم `{t_id}`.\n⭐️ رصيده الإجمالي الآن أصبح: **{updated_u[2]}** نقطة.", parse_mode="Markdown")
+        try: bot.send_message(t_id, f"🎁 **مكافأة من الإدارة!**\nتمت إضافة **{pts}** نقطة إلى حسابك.\nرصيدك الآن: **{updated_u[2]}** نقطة.", parse_mode="Markdown")
+        except: pass
         return
-
-    bot.reply_to(message, "⚠️ طريقة الاستخدام:\n• للجميع: /addpoints all 20\n• لشخص: /addpoints <ID> 50")
+    bot.reply_to(message, "⚠️ **طريقة الاستخدام:**\n• للجميع: `/addpoints all 20`\n• لشخص: `/addpoints <ID> 50`", parse_mode="Markdown")
 
 # ═══════════════════════════════════════════
 #             معالجة الأوامر العامة
@@ -404,33 +351,28 @@ def handle_start(message):
     user_id = message.from_user.id
     username = message.from_user.username or "Unknown"
     user = get_user(user_id)
-
     if not user:
         args = message.text.split()
         ref_id = None
         if len(args) > 1 and args[1].isdigit():
             c = int(args[1])
-            if c != user_id:
-                ref_id = c
+            if c != user_id: ref_id = c
         with sqlite3.connect(DB_FILE, timeout=30) as conn:
             cursor = conn.cursor()
             cursor.execute('INSERT INTO users (user_id, username, referrer_id) VALUES (?, ?, ?)', (user_id, username, ref_id))
             conn.commit()
-        bot.send_message(user_id, "✦ اختر لغتك / Select your language ✦", reply_markup=lang_inline_kb())
+        bot.send_message(user_id, "✦ **اختر لغتك / Select your language** ✦", reply_markup=lang_inline_kb(), parse_mode="Markdown")
         return
-
     lang = user[4] or 'ar'
     if not check_sub(user_id):
         show_sub_gate(user_id, lang)
         return
-
-    bot.send_message(user_id, TEXTS[lang]['welcome'], reply_markup=main_keyboard(lang))
+    bot.send_message(user_id, TEXTS[lang]['welcome'], reply_markup=main_keyboard(lang), parse_mode="Markdown")
 
 @bot.message_handler(commands=['link', 'store', 'wheel', 'lang', 'contact', 'social', 'help'])
 def handle_slash(message):
     user = get_user(message.from_user.id)
-    if not user:
-        return handle_start(message)
+    if not user: return handle_start(message)
     lang = user[4] or 'ar'
     cmd = message.text.split()[0].replace('/', '')
     if cmd == 'link': trigger_link(message.from_user.id, lang)
@@ -441,22 +383,18 @@ def handle_slash(message):
     elif cmd == 'social': trigger_social(message.from_user.id)
     elif cmd == 'help': trigger_help(message.from_user.id, lang)
 
-# ═══════════════════════════════════════════
-#             معالجة نصوص الأزرار
-# ═══════════════════════════════════════════
 @bot.message_handler(func=lambda msg: True)
 def handle_texts(message):
     user_id = message.from_user.id
     user = get_user(user_id)
-    if not user:
-        return handle_start(message)
-    if not check_sub(user_id):
-        return show_sub_gate(user_id, user[4] or 'ar')
-
+    if not user: return handle_start(message)
+    if not check_sub(user_id): return show_sub_gate(user_id, user[4] or 'ar')
     lang = user[4] or 'ar'
     txt = message.text
-
-    if txt in [TEXTS['ar']['btn_link'], TEXTS['en']['btn_link']]: trigger_link(user_id, lang)
+    if txt in [TEXTS['ar']['btn_back'], TEXTS['en']['btn_back'],
+               TEXTS['ar']['btn_home'], TEXTS['en']['btn_home']]:
+        show_main_menu(user_id, lang)
+    elif txt in [TEXTS['ar']['btn_link'], TEXTS['en']['btn_link']]: trigger_link(user_id, lang)
     elif txt in [TEXTS['ar']['btn_store'], TEXTS['en']['btn_store']]: trigger_store(user_id, lang)
     elif txt in [TEXTS['ar']['btn_wheel'], TEXTS['en']['btn_wheel']]: trigger_wheel(user_id, lang, message.from_user.username)
     elif txt in [TEXTS['ar']['btn_lang'], TEXTS['en']['btn_lang']]: bot.send_message(user_id, "🌐 اختر لغة / Select Language:", reply_markup=lang_inline_kb())
@@ -467,26 +405,34 @@ def handle_texts(message):
 # ═══════════════════════════════════════════
 #             الوظائف التنفيذية
 # ═══════════════════════════════════════════
+def show_main_menu(user_id, lang):
+    bot.send_message(
+        user_id,
+        TEXTS[lang]['welcome'],
+        reply_markup=main_keyboard(lang),
+        parse_mode="Markdown"
+    )
+
 def trigger_link(user_id, lang):
     user = get_user(user_id)
     bot_info = bot.get_me()
     msg = TEXTS[lang]['link_msg'].format(bot_info.username, user_id, user[3], user[2])
-    bot.send_message(user_id, msg)
+    bot.send_message(user_id, msg, reply_markup=navigation_keyboard(lang), parse_mode="Markdown")
 
 def trigger_store(user_id, lang):
     markup = InlineKeyboardMarkup(row_width=1)
     packages = [
-        ("⭐ 15 Stars  ➔  5 Points", 5, 15),
-        ("⭐ 30 Stars  ➔  10 Points", 10, 30),
-        ("⭐ 70 Stars  ➔  20 Points", 20, 70),
-        ("⭐ 250 Stars ➔  50 Points", 50, 250),
-        ("⭐ 350 Stars ➔  100 Points", 100, 350)
+        ("🟢 ⭐ 15 Stars  ➔  5 Points", 5, 15),
+        ("🟢 ⭐ 30 Stars  ➔  10 Points", 10, 30),
+        ("🟢 ⭐ 70 Stars  ➔  20 Points", 20, 70),
+        ("🟢 ⭐ 250 Stars ➔  50 Points", 50, 250),
+        ("🟢 ⭐ 350 Stars ➔  100 Points", 100, 350)
     ]
     for label, pts, stars in packages:
         markup.add(InlineKeyboardButton(label, callback_data=f"buy_{pts}_{stars}"))
-    bot.send_message(user_id, TEXTS[lang]['store_msg'], reply_markup=markup)
+    markup.row(*store_navigation_buttons(lang))
+    bot.send_message(user_id, TEXTS[lang]['store_msg'], reply_markup=markup, parse_mode="Markdown")
 
-# ماكينة الحظ التفاعلية بأنيميشن حقيقي (تليجرام سلوتس 🎰 فيديو ثلاثي الأبعاد)
 def trigger_wheel(user_id, lang, username):
     user = get_user(user_id)
     now = time.time()
@@ -494,12 +440,8 @@ def trigger_wheel(user_id, lang, username):
 
     if now - last_spin < 86400:
         hours_left = round((86400 - (now - last_spin)) / 3600, 1)
-        wait_text = (
-            f"⏳ عفواً! لقد استخدمت لفة الحظ اليومية.\nيرجى الانتظار {hours_left} ساعة للمحاولة مجدداً."
-        ) if lang == 'ar' else (
-            f"⏳ Hold on! You already spun today.\nPlease wait {hours_left} hours."
-        )
-        bot.send_message(user_id, wait_text)
+        wait_text = f"⏳ **عفواً! لقد استخدمت لفة الحظ اليومية.**\nيرجى الانتظار **{hours_left}** ساعة للمحاولة مجدداً." if lang == 'ar' else f"⏳ **Hold on! You already spun today.**\nPlease wait **{hours_left}** hours."
+        bot.send_message(user_id, wait_text, reply_markup=navigation_keyboard(lang), parse_mode="Markdown")
         return
 
     with sqlite3.connect(DB_FILE, timeout=30) as conn:
@@ -507,69 +449,55 @@ def trigger_wheel(user_id, lang, username):
         cursor.execute('UPDATE users SET last_spin = ? WHERE user_id = ?', (now, user_id))
         conn.commit()
 
-    intro_msg = "🎰 جاري سحب الذراع وتدوير ماكينة الحظ..." if lang == 'ar' else "🎰 Spinning the Lucky Reel Machine..."
-    bot.send_message(user_id, intro_msg)
-
-    # إرسال ماكينة الحظ التفاعلية الرسمية
+    wheel_intro = (
+        "╭━━━━━━━━━━━━━━━━━━━━╮\n"
+        "      🎡 **عجلة الحظ اليومية**\n"
+        "╰━━━━━━━━━━━━━━━━━━━━╯\n\n"
+        "        🔺\n"
+        "   ⭐  |  💎  |  💵\n"
+        "  ────🎡────\n"
+        "   💔  |  ⭐  |  💎\n\n"
+        "🎰 **جاري تدوير العجلة...**"
+    ) if lang == 'ar' else (
+        "╭━━━━━━━━━━━━━━━━━━━━╮\n"
+        "      🎡 **DAILY LUCKY WHEEL**\n"
+        "╰━━━━━━━━━━━━━━━━━━━━╯\n\n"
+        "        🔺\n"
+        "   ⭐  |  💎  |  💵\n"
+        "  ────🎡────\n"
+        "   💔  |  ⭐  |  💎\n\n"
+        "🎰 **Spinning the wheel...**"
+    )
+    bot.send_message(user_id, wheel_intro, reply_markup=navigation_keyboard(lang), parse_mode="Markdown")
     slot_dice = bot.send_dice(user_id, emoji='🎰')
-    dice_val = slot_dice.dice.value
-
-    # انتظار انتهاء أنيميشن البكرات
     time.sleep(2.5)
 
     outcomes = ["lose", "15_stars", "premium", "2_dollars"]
     weights = [90000, 9000, 990, 10]
     result = random.choices(outcomes, weights=weights, k=1)[0]
-
-    if dice_val == 64:
-        result = "premium"
+    if slot_dice.dice.value == 64: result = "premium"
 
     if result == "lose":
-        final_ui = (
-            "╭━━━━━━━━━━━━━━━━━━━━━━╮\n"
-            "   💔  L U C K Y  R E E L  💔\n"
-            "╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n"
-            "😔 حظ أوفر في المرة القادمة!\n"
-            "لم تتطابق الرموز اليوم، لكن العجلة تتجدد كل 24 ساعة. عد غداً وحاول من جديد! 🔥"
-        ) if lang == 'ar' else (
-            "╭━━━━━━━━━━━━━━━━━━━━━━╮\n"
-            "   💔  L U C K Y  R E E L  💔\n"
-            "╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n"
-            "😔 Better luck next time!\n"
-            "Symbols didn't match today. Spin resets in 24 hours, try again tomorrow! 🔥"
-        )
+        final_ui = "╭━━━━━━━━━━━━━━━━━━━━━━╮\n   💔  L U C K Y  R E E L  💔\n╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n😔 **حظ أوفر في المرة القادمة!**\nلم تتطابق الرموز اليوم، لكن العجلة تتجدد كل 24 ساعة. عد غداً وحاول من جديد! 🔥" if lang == 'ar' else "╭━━━━━━━━━━━━━━━━━━━━━━╮\n   💔  L U C K Y  R E E L  💔\n╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n😔 **Better luck next time!**\nSymbols didn't match today. Spin resets in 24 hours, try again tomorrow! 🔥"
     else:
         prize_title = "15 ⭐️ Stars" if result == "15_stars" else "Telegram Premium 💎" if result == "premium" else "2.00$ Cash 💵"
-        final_ui = (
-            "╭━━━━━━━━━━━━━━━━━━━━━━╮\n"
-            "   🎉 ✦ J A C K P O T ! ✦ 🎉\n"
-            "╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n"
-            f"🥳 مـبـارك! لـقـد كـسـبـت الـجـائـزة!\n"
-            f"╰┈➤ الجائزة: {prize_title}\n\n"
-            "📩 تواصل مع الدعم عبر زر [ 📞 تواصل معي ] لاستلام جائزتك فوراً!"
-        ) if lang == 'ar' else (
-            "╭━━━━━━━━━━━━━━━━━━━━━━╮\n"
-            "   🎉 ✦ J A C K P O T ! ✦ 🎉\n"
-            "╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n"
-            f"🥳 CONGRATULATIONS! YOU WON!\n"
-            f"╰┈➤ Prize: {prize_title}\n\n"
-            "📩 Contact support via [ 📞 Contact Me ] to claim your reward!"
-        )
+        final_ui = f"╭━━━━━━━━━━━━━━━━━━━━━━╮\n   🎉 ✦ J A C K P O T ! ✦ 🎉\n╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n🥳 **مـبـارك! لـقـد كـسـبـت الـجـائـزة!**\n╰┈➤ الجائزة: **{prize_title}**\n\n📩 تواصل مع الدعم عبر زر `📞 تواصل معي` لاستلام جائزتك فوراً!" if lang == 'ar' else f"╭━━━━━━━━━━━━━━━━━━━━━━╮\n   🎉 ✦ J A C K P O T ! ✦ 🎉\n╰━━━━━━━━━━━━━━━━━━━━━━╯\n\n🥳 **CONGRATULATIONS! YOU WON!**\n╰┈➤ Prize: **{prize_title}**\n\n📩 Contact support via `📞 Contact Me` to claim your reward!"
 
         try:
+            # السجل المطابق لشكل طلبك تماماً بدون ماركداون معقد
             user_tag = f"@{username}" if username else "بدون يوزر"
-            bot.send_message(
-                LOG_CHANNEL,
-                f"🎡 فائز جديد في ماكينة الحظ!\n"
+            log_text = (
+                "🎡 فائز جديد في ماكينة الحظ!\n"
                 f"👤 المستخدم: {user_tag}\n"
                 f"🆔 المعرف (ID): {user_id}\n"
                 f"🎁 الجائزة: {prize_title}\n"
-                f"🕒 النوع: ماكينة الحظ اليومية"
+                "🕒 النوع: ماكينة الحظ اليومية"
             )
-        except Exception:
-            pass
+            # إرسال بدون Parse_Mode لتجنب الأعطال
+            bot.send_message(LOG_CHANNEL, log_text)
+        except: pass
 
-    bot.send_message(user_id, final_ui)
+    bot.send_message(user_id, final_ui, reply_markup=navigation_keyboard(lang), parse_mode="Markdown")
 
 def trigger_contact(user_id):
     markup = InlineKeyboardMarkup(row_width=1)
@@ -579,7 +507,7 @@ def trigger_contact(user_id):
         InlineKeyboardButton("👾 Discord: kaisen_xv", url="https://discord.com/users/kaisen_xv"),
         InlineKeyboardButton("📘 فيسبوك / Facebook", url="https://www.facebook.com/share/1cdngkRAyZ/")
     )
-    bot.send_message(user_id, "╭─── ◈ قنوات التواصل المباشر ◈ ───╮\nاختر المنصة المناسبة:", reply_markup=markup)
+    bot.send_message(user_id, "╭─── ◈ **قنوات التواصل المباشر** ◈ ───╮\nاختر المنصة المناسبة:", reply_markup=markup, parse_mode="Markdown")
 
 def trigger_social(user_id):
     markup = InlineKeyboardMarkup(row_width=1)
@@ -588,10 +516,10 @@ def trigger_social(user_id):
         InlineKeyboardButton("🎵 تيك توك / TikTok (@kaisen_xv)", url="https://tiktok.com/@kaisen_xv"),
         InlineKeyboardButton("🏰 مجتمع ديسكورد / Discord Server", url="https://discord.gg/CUaqfBBcCM")
     )
-    bot.send_message(user_id, "╭─── ◈ حساباتي الرسمية ◈ ───╮", reply_markup=markup)
+    bot.send_message(user_id, "╭─── ◈ **حساباتي الرسمية** ◈ ───╮", reply_markup=markup, parse_mode="Markdown")
 
 def trigger_help(user_id, lang):
-    bot.send_message(user_id, TEXTS[lang]['help_msg'])
+    bot.send_message(user_id, TEXTS[lang]['help_msg'], reply_markup=navigation_keyboard(lang), parse_mode="Markdown")
 
 # ═══════════════════════════════════════════
 #             معالجة أزرار الـ Inline
@@ -613,20 +541,25 @@ def handle_callbacks(call):
                 cursor.execute('UPDATE users SET points = COALESCE(points, 0) + 1, referrals = COALESCE(referrals, 0) + 1 WHERE user_id = ?', (ref,))
                 cursor.execute('UPDATE users SET referrer_id = NULL WHERE user_id = ?', (user_id,))
                 conn.commit()
-            try: bot.send_message(ref, "🎉 دخل شخص جديد عبر رابطك وحصلت على +1 نقطة!")
-            except Exception: pass
-        if not check_sub(user_id):
-            return show_sub_gate(user_id, lang)
-        bot.send_message(user_id, TEXTS[lang]['welcome'], reply_markup=main_keyboard(lang))
+            try: bot.send_message(ref, "🎉 دخل شخص جديد عبر رابطك وحصلت على **+1 نقطة**!", parse_mode="Markdown")
+            except: pass
+        if not check_sub(user_id): return show_sub_gate(user_id, lang)
+        bot.send_message(user_id, TEXTS[lang]['welcome'], reply_markup=main_keyboard(lang), parse_mode="Markdown")
 
     elif data == "check_sub":
         u = get_user(user_id)
         lang = u[4] if u and u[4] else 'ar'
         if check_sub(user_id):
             bot.answer_callback_query(call.id, "✅ تم التحقق بنجاح!")
-            bot.send_message(user_id, TEXTS[lang]['welcome'], reply_markup=main_keyboard(lang))
+            show_main_menu(user_id, lang)
         else:
             bot.answer_callback_query(call.id, "❌ لم تشترك في القنوات بعد!", show_alert=True)
+
+    elif data in ["nav_back", "nav_home"]:
+        u = get_user(user_id)
+        lang = u[4] if u and u[4] else 'ar'
+        bot.answer_callback_query(call.id)
+        show_main_menu(user_id, lang)
 
     elif data.startswith("buy_"):
         _, pts, stars = data.split('_')
@@ -640,17 +573,16 @@ def handle_callbacks(call):
                 conn.commit()
             bot.answer_callback_query(call.id, TEXTS[lang]['buy_success'], show_alert=True)
             try:
-                tag = f"@{call.from_user.username}" if call.from_user.username else "بدون يوزر"
-                bot.send_message(
-                    LOG_CHANNEL,
-                    f"🛒 طلب شراء واستبدال جديد!\n"
-                    f"👤 المستخدم: {tag}\n"
-                    f"🆔 المعرف: {user_id}\n"
-                    f"📦 الطلب: استبدال {stars} نجمة ⭐️\n"
-                    f"💰 النقاط المخصومة: {pts} نقطة\n"
-                    f"📊 الرصيد المتبقي: {u[2] - pts} نقطة"
+                user_tag = f"@{call.from_user.username}" if call.from_user.username else "بدون يوزر"
+                # استخدام HTML للظهور بنفس شكل Markdown القديم بدون أعطال الرموز
+                log_text = (
+                    "🛒 <b>طلب شراء جديد!</b>\n"
+                    f"👤 المستخدم: {user_tag}\n"
+                    f"📦 الباقة: <code>{stars} Stars</code>\n"
+                    f"💰 النقاط المخصومة: <code>{pts}</code>"
                 )
-            except Exception: pass
+                bot.send_message(LOG_CHANNEL, log_text, parse_mode="HTML")
+            except: pass
         else:
             bot.answer_callback_query(call.id, "❌ رصيد نقاطك غير كافٍ!", show_alert=True)
 
