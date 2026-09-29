@@ -11,10 +11,10 @@ import os
 TOKEN = '8237170809:AAEBc9FLHiFnRYwzKCXiCIwLgfNJXCph6-s'
 ADMIN_ID = 5968344409
 LOG_CHANNEL = "-1003760548477"  
-REQUIRED_CHANNELS = ['@kaisenxmlandedits', '@MediaDownloaderchannel', '@kaisencommunity', '@storecredibility']
+REQUIRED_CHANNELS = ['@kaisenhub', '@MediaDownloaderchannel', '@kaisencommunity', '@storecredibility']
 
 # ⚠️ رابط الكابتشا
-CAPTCHA_WEB_URL = "https://creative-crostata-4dfd96.netlify.app/"
+CAPTCHA_WEB_URL = "https://wonderful-buttercream-ea663e.netlify.app"
 
 bot = telebot.TeleBot(TOKEN)
 DB_FILE = 'bot_database.db'
