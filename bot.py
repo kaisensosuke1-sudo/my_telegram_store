@@ -11,10 +11,11 @@ import os
 TOKEN = '8237170809:AAEBc9FLHiFnRYwzKCXiCIwLgfNJXCph6-s'
 ADMIN_ID = 5968344409
 LOG_CHANNEL = "-1003760548477"  
+# تم تحديث القناة الأولى هنا
 REQUIRED_CHANNELS = ['@kaisenhub', '@MediaDownloaderchannel', '@kaisencommunity', '@storecredibility']
 
-# ⚠️ رابط الكابتشا
-CAPTCHA_WEB_URL = "https://wonderful-buttercream-ea663e.netlify.app"
+# ⚠️ رابط الكابتشا الجديد
+CAPTCHA_WEB_URL = "https://wonderful-buttercream-ea663e.netlify.app/"
 
 bot = telebot.TeleBot(TOKEN)
 DB_FILE = 'bot_database.db'
@@ -31,7 +32,7 @@ def ce(emoji_id, fallback="✨"):
 # ═══════════════════════════════════════════
 STORE_ITEMS = [
     ("15 Stars ➔ 5 Points", 5, "15 Stars"),
-    ("30 Stars ➔ 12 Points", 12, "30 Stars"),
+    ("35 Stars ➔ 18 Points", 18, "35 Stars"),
     ("70 Stars ➔ 30 Points", 30, "70 Stars"),
     ("🛡 CyberGhost VPN Premium ➔ 20 Pts", 20, "CyberGhost VPN Premium"),
     ("🛡 Express VPN Premium ➔ 25 Pts", 25, "Express VPN Premium"),
@@ -173,7 +174,7 @@ TEXTS = {
         'help_msg': (
             f"╭─── ◈ <b>Help & Bot Commands</b> {ce('5215473225273713259', '❓')} ◈ ───╮\n\n"
             f"• <code>/start</code> - Start the bot 🚀\n"
-            f"• <code>/store</code> - Open store 🛍️\n"
+            f"• <code>/store</code> - Open store 🛍️️\n"
             f"• <code>/profile</code> - My account stats 🪪\n"
             f"• <code>/link</code> - Referral link & balance 🔗\n"
             f"• <code>/wheel</code> - Spin daily reel 🎰\n"
@@ -980,4 +981,3 @@ def trigger_social(user_id, lang='ar'):
     text = (
         f"{ce('5224607267797606837', '📱')} <b>حساباتي الرسمية</b>\n\n"
         f"تابعنا على السوشيال ميديا 🌟:\n\n"
-        f"{ce('52134063753417312
