@@ -981,3 +981,157 @@ def trigger_social(user_id, lang='ar'):
     text = (
         f"{ce('5224607267797606837', '📱')} <b>حساباتي الرسمية</b>\n\n"
         f"تابعنا على السوشيال ميديا 🌟:\n\n"
+       f"{ce('5213406375341731253', '🌐')}"
+    )
+    markup = InlineKeyboardMarkup(row_width=1)
+    markup.add(
+        InlineKeyboardButton("بوابة جميع حساباتي (All In One)", url="https://linktr.ee/kaisen_xv", style="primary", icon_custom_emoji_id="5224607267797606837"),
+        InlineKeyboardButton("تيك توك / TikTok (@kaisen_xv)", url="https://tiktok.com/@kaisen_xv", style="primary", icon_custom_emoji_id="5213406375341731253"),
+        InlineKeyboardButton("مجتمع ديسكورد / Discord Server", url="https://discord.gg/CUaqfBBcCM", style="primary", icon_custom_emoji_id="5325612636467903082")
+    )
+    markup.row(*store_navigation_buttons(lang))
+    bot.send_message(user_id, text, reply_markup=markup, parse_mode="HTML")
+
+def trigger_help(user_id, lang):
+    bot.send_message(user_id, TEXTS[lang]['help_msg'], reply_markup=section_inline_keyboard(lang), parse_mode="HTML")
+
+# ═══════════════════════════════════════════
+#             معالجة أزرار الـ Inline
+# ═══════════════════════════════════════════
+@bot.callback_query_handler(func=lambda call: True)
+def handle_callbacks(call):
+    user_id = call.from_user.id
+    data = call.data
+    user = get_user(user_id)
+    lang = user[4] if user else 'ar'
+
+    if data not in ["check_sub"] and not data.startswith("setlang_"):
+        if not enforce_security(user_id, lang):
+            try: bot.answer_callback_query(call.id, "⚠️ يرجى تلبية الشروط أولاً.", show_alert=False)
+            except: pass
+            return
+
+    if data.startswith("setlang_"):
+        lang = data.split('_')[1]
+        delete_callback_message(call)
+        update_lang(user_id, lang)
+        bot.answer_callback_query(call.id, "✅ Done!")
+        if not enforce_security(user_id, lang): return
+        show_main_menu(user_id, lang)
+
+    elif data == "check_sub":
+        pending_channels = get_unsubscribed_channels(user_id)
+        if not pending_channels:
+            bot.answer_callback_query(call.id, "✅ تم التحقق بنجاح! ✨")
+            if needs_captcha(user):
+                delete_callback_message(call)
+                return show_captcha(user_id, lang)
+            update_active(user_id)
+            show_main_menu(user_id, lang)
+        else:
+            bot.answer_callback_query(call.id, f"❌ تبقى {len(pending_channels)} قناة للاشتراك" if lang == 'ar' else f"❌ {len(pending_channels)} channel(s) remaining", show_alert=True)
+            try: bot.edit_message_reply_markup(user_id, call.message.message_id, reply_markup=subscription_inline_keyboard(user_id, lang))
+            except: pass
+
+    elif data in ["nav_back", "nav_home"]:
+        bot.answer_callback_query(call.id)
+        delete_callback_message(call)
+        show_main_menu(user_id, lang)
+
+    elif data.startswith("main_"):
+        action = data.replace("main_", "", 1)
+        if action not in ["link", "profile"]:
+            delete_callback_message(call)
+        bot.answer_callback_query(call.id)
+        
+        if action == "link": trigger_link(user_id, lang)
+        elif action == "profile": trigger_profile(user_id, lang)
+        elif action == "store": trigger_store(user_id, lang)
+        elif action == "wheel": trigger_wheel(user_id, lang, call.from_user.username)
+        elif action == "orders": trigger_orders(user_id, lang)
+        elif action == "lang": bot.send_message(user_id, "🌐 اختر لغة / Select Language 🌍:", reply_markup=lang_inline_kb(), parse_mode="HTML")
+        elif action == "contact": trigger_contact(user_id, lang)
+        elif action == "social": trigger_social(user_id, lang)
+        elif action == "help": trigger_help(user_id, lang)
+
+    elif data == "refresh_orders":
+        trigger_orders(user_id, lang, edit_message_id=call.message.message_id)
+        try: bot.answer_callback_query(call.id, "✅ تم التحديث! ✨" if lang == 'ar' else "✅ Refreshed! ✨")
+        except: pass
+
+    elif data.startswith("store_page_"):
+        try:
+            page = max(0, int(data.replace("store_page_", "")))
+        except:
+            page = 0
+        bot.answer_callback_query(call.id)
+        trigger_store(user_id, lang, page=page, edit_message_id=call.message.message_id)
+
+    elif data.startswith("buy_"):
+        _, pts_str, item = data.split('_', 2)
+        try:
+            pts = int(pts_str)
+        except: return
+            
+        valid_purchase = False
+        for label, price, name in STORE_ITEMS:
+            if name == item and price == pts:
+                valid_purchase = True
+                break
+                
+        if not valid_purchase or pts <= 0:
+            bot.answer_callback_query(call.id, "❌ محاولة غير صالحة! (تم رصد تلاعب)", show_alert=True)
+            return
+
+        with sqlite3.connect(DB_FILE, timeout=30) as conn:
+            cursor = conn.cursor()
+            cursor.execute('UPDATE users SET points = points - ? WHERE user_id = ? AND points >= ?', (pts, user_id, pts))
+            
+            if cursor.rowcount > 0:
+                cursor.execute('INSERT INTO orders (user_id, stars, points, status, created_at) VALUES (?, ?, ?, ?, ?)', (user_id, item, pts, 'pending', time.time()))
+                order_id = cursor.lastrowid
+                conn.commit()
+                bot.answer_callback_query(call.id, TEXTS[lang]['buy_success'], show_alert=True)
+                
+                try:
+                    user_tag = f"@{call.from_user.username}" if call.from_user.username else "بدون يوزر"
+                    log_text = (
+                        "🛒 <b>طلب شراء جديد!</b> 🚀\n\n"
+                        f"🧾 الطلب رقم: <b>#{order_id}</b>\n"
+                        f"👤 المستخدم: {user_tag} <code>{user_id}</code>\n"
+                        f"📦 المنتج: <code>{item}</code>\n"
+                        f"💰 النقاط المخصومة: <code>{pts}</code> ⚡️"
+                    )
+                    markup_log = InlineKeyboardMarkup()
+                    markup_log.row(
+                        InlineKeyboardButton("✅ تأكيد الطلب", callback_data=f"ord_acc_{order_id}_{user_id}", icon_custom_emoji_id="5848483892113182982"),
+                        InlineKeyboardButton("❌ رفض الطلب", callback_data=f"ord_rej_{order_id}_{user_id}", icon_custom_emoji_id="5350831692292565080")
+                    )
+                    bot.send_message(LOG_CHANNEL, log_text, parse_mode="HTML", reply_markup=markup_log)
+                except: pass
+            else:
+                bot.answer_callback_query(call.id, "❌ رصيد نقاطك غير كافٍ! 🛑", show_alert=True)
+
+    elif data.startswith("ord_acc_"):
+        _, _, order_id, uid = data.split('_')
+        bot.answer_callback_query(call.id, "✅ تم تأكيد الطلب! ✨")
+        with sqlite3.connect(DB_FILE, timeout=30) as conn:
+            cursor = conn.cursor()
+            cursor.execute("UPDATE orders SET status = 'completed' WHERE order_id = ?", (order_id,))
+            conn.commit()
+        try:
+            new_text = call.message.text + "\n\n✅ <b>تم تأكيد الطلب وتسليم الجائزة!</b> 🎁"
+            bot.edit_message_text(new_text, chat_id=call.message.chat.id, message_id=call.message.message_id, parse_mode="HTML")
+        except: pass
+        try: bot.send_message(uid, f"🎉 <b>تهانينا!</b> 🚀\nتم تأكيد طلبك رقم <code>#{order_id}</code> وتم الحصول على الجائزة بنجاح 🎁.", parse_mode="HTML")
+        except: pass
+
+    elif data.startswith("ord_rej_"):
+        _, _, order_id, uid = data.split('_')
+        bot.answer_callback_query(call.id, "انتقل لخاص البوت لكتابة سبب الرفض! 📝", show_alert=True)
+        try:
+            msg = bot.send_message(call.from_user.id, f"📝 أرسل سبب رفض ومصادرة الطلب رقم <code>#{order_id}</code> الآن 🛑:", parse_mode="HTML")
+            bot.register_next_step_handler(msg, process_reject_reason, order_id, uid, call.message.chat.id, call.message.message_id, call.message.text)
+        except: pass
+
+bot.infinity_polling()
